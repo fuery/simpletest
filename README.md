@@ -29,7 +29,7 @@ or add the package `simpletest/simpletest` to the require-dev section of your `c
 
     {
         "require-dev": {
-            "simpletest/simpletest": "^1.1"
+            "williamgall/simpletest": "^1.2.1"
         }
     }
 
