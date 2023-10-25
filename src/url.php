@@ -59,7 +59,12 @@ class SimpleUrl
         }
         $this->path = $this->chompPath($url);
         $this->request = $this->parseRequest($this->chompRequest($url));
-        $this->fragment = (0 == strncmp($url, '#', 1) ? substr($url, 1) : false);
+        if ($url === NULL)
+        {
+            $this->fragment = false;
+        }else{
+            $this->fragment = (0 == strncmp($url, '#', 1) ? substr($url, 1) : false);
+        }
         $this->target = false;
     }
 
@@ -149,6 +154,10 @@ class SimpleUrl
      */
     protected function chompHost(&$url)
     {
+        if ($url === NULL)
+        {
+            return false;
+        }
         if (preg_match('!^(//)(.*?)(/.*|\?.*|#.*|$)!', $url, $matches)) {
             $url = $matches[3];
 
