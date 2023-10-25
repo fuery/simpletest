@@ -698,6 +698,8 @@ class SimplePhpPageBuilder
     private $loading_frames = [];
     private $frameset_nesting_level = 0;
     private $left_over_labels = [];
+    private $last_widget;
+    private $label;
 
     /**
      * Frees up any references so as to allow the PHP garbage collection from unset() to work.
