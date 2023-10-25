@@ -72,6 +72,10 @@ class SimpleUrl
      */
     protected function chompCoordinates(&$url)
     {
+        if ($url === NULL)
+        {
+            return [false,false];
+        }
         if (preg_match('/(.*)\?(\d+),(\d+)$/', $url, $matches)) {
             $url = $matches[1];
 
@@ -90,6 +94,10 @@ class SimpleUrl
      */
     protected function chompScheme(&$url)
     {
+        if ($url === NULL)
+        {
+            return false;
+        }
         if (preg_match('#^([^/:]*):(//)(.*)#', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
@@ -109,6 +117,10 @@ class SimpleUrl
      */
     protected function chompLogin(&$url)
     {
+        if ($url === NULL)
+        {
+            return [false,false];
+        }
         $prefix = '';
         if (preg_match('#^(//)(.*)#', $url, $matches)) {
             $prefix = $matches[1];
@@ -167,6 +179,10 @@ class SimpleUrl
      */
     protected function chompPath(&$url)
     {
+        if ($url === NULL)
+        {
+            return '';
+        }
         if (preg_match('/(.*?)(\?|#|$)(.*)/', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
@@ -185,6 +201,10 @@ class SimpleUrl
      */
     protected function chompRequest(&$url)
     {
+        if ($url === NULL)
+        {
+            return '';
+        }
         if (preg_match('/\?(.*?)(#|$)(.*)/', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
