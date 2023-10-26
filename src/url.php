@@ -59,12 +59,9 @@ class SimpleUrl
         }
         $this->path = $this->chompPath($url);
         $this->request = $this->parseRequest($this->chompRequest($url));
-        if ($url === NULL)
-        {
-            $this->fragment = false;
-        }else{
-            $this->fragment = (0 == strncmp($url, '#', 1) ? substr($url, 1) : false);
-        }
+       
+        $this->fragment = (0 == strncmp($url, '#', 1) ? substr($url, 1) : false);
+     
         $this->target = false;
     }
 
@@ -77,10 +74,6 @@ class SimpleUrl
      */
     protected function chompCoordinates(&$url)
     {
-        if ($url === NULL)
-        {
-            return [false,false];
-        }
         if (preg_match('/(.*)\?(\d+),(\d+)$/', $url, $matches)) {
             $url = $matches[1];
 
@@ -99,10 +92,6 @@ class SimpleUrl
      */
     protected function chompScheme(&$url)
     {
-        if ($url === NULL)
-        {
-            return false;
-        }
         if (preg_match('#^([^/:]*):(//)(.*)#', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
@@ -122,10 +111,6 @@ class SimpleUrl
      */
     protected function chompLogin(&$url)
     {
-        if ($url === NULL)
-        {
-            return [false,false];
-        }
         $prefix = '';
         if (preg_match('#^(//)(.*)#', $url, $matches)) {
             $prefix = $matches[1];
@@ -154,10 +139,6 @@ class SimpleUrl
      */
     protected function chompHost(&$url)
     {
-        if ($url === NULL)
-        {
-            return false;
-        }
         if (preg_match('!^(//)(.*?)(/.*|\?.*|#.*|$)!', $url, $matches)) {
             $url = $matches[3];
 
@@ -188,10 +169,6 @@ class SimpleUrl
      */
     protected function chompPath(&$url)
     {
-        if ($url === NULL)
-        {
-            return '';
-        }
         if (preg_match('/(.*?)(\?|#|$)(.*)/', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
@@ -210,10 +187,6 @@ class SimpleUrl
      */
     protected function chompRequest(&$url)
     {
-        if ($url === NULL)
-        {
-            return '';
-        }
         if (preg_match('/\?(.*?)(#|$)(.*)/', $url, $matches)) {
             $url = $matches[2].$matches[3];
 
