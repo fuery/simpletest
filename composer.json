@@ -1,5 +1,5 @@
 {
-    "name": "williamgall/simpletest",
+    "name": "fuery/simpletest",
     "description": "SimpleTest is a framework for unit testing, web site testing and mock objects for PHP.",
     "type": "library",
     "keywords": [
