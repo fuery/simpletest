@@ -80,6 +80,7 @@ class SimpleTagBuilder
             'checkbox' => 'SimpleCheckboxTag',
             'radio' => 'SimpleRadioButtonTag',
             'text' => 'SimpleTextTag',
+            'email' => 'SimpleTextTag',
             'hidden' => 'SimpleTextTag',
             'password' => 'SimpleTextTag',
             'date' => 'SimpleDateTag',
